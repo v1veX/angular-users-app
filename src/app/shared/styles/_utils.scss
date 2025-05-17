@@ -1,0 +1,10 @@
+@use 'helpers' as *;
+
+.container {
+    --container-width: #{rem(1200)};
+    --container-padding-x: #{rem(20)};
+
+    max-width: calc(var(--container-width) +  var(--container-padding-x) * 2);
+    padding-inline: var(--container-padding-x);
+    margin-inline: auto;
+}

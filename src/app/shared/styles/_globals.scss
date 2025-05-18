@@ -1,5 +1,9 @@
 body {
-    background-color: var(--color-light);
+    background-color: var(--color-main);
     color: var(--color-dark);
     font-family: system-ui, sans-serif;
+}
+
+a {
+    text-decoration: none;
 }

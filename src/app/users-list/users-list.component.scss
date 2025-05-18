@@ -1,0 +1,41 @@
+@use '../shared/styles/helpers' as *;
+
+.users-list {
+    display: grid;
+    row-gap: rem(15);
+}
+
+.user-card {
+    --iconOpacity: 0;
+
+    display: flex;
+    align-items: center;
+    column-gap: rem(25);
+    padding: rem(15);
+    color: inherit;
+    transition-duration: var(--transition-duration);
+
+    @include hover {
+        --iconOpacity: 1;
+
+        filter: brightness(0.96);
+    }
+
+    &__image {
+        @include square(rem(60));
+    }
+
+    &__body {
+        flex-grow: 1;
+    }
+
+    &__view-icon {
+        opacity: var(--iconOpacity);
+        color: var(--color-violet);
+        transition-duration: var(--transition-duration);
+
+        svg {
+            @include square(rem(30));
+        }
+    }
+}

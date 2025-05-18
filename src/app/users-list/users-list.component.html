@@ -1,1 +1,37 @@
-<p>users-list works!</p>
+<section class="section container">
+    <h1 class="visually-hidden">Users</h1>
+    <header class="section__header">
+        <a [routerLink]="['/create-user']" class="section__link button button--accent">
+            <div class="button__icon">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M24 10V38M10 24H38" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <span>Add user</span>
+        </a>
+    </header>
+    <div class="section__body">
+        <ul class="users-list">
+            <li class="users-list__item">
+                <a href="/" class="user-card tile">
+                    <img
+                        src=""
+                        alt=""
+                        class="user-card__image"
+                        width="40"
+                        height="40"
+                    />
+                    <div class="user-card__body">
+                        <h2 class="user-card__name">Vladimir Sakmarkin</h2>
+                        <p class="user-card__username">&#64;v1veX</p>
+                    </div>
+                    <div class="user-card__view-icon">
+                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 11.7877V16.7877C15 17.2297 14.8244 17.6536 14.5118 17.9662C14.1993 18.2788 13.7754 18.4543 13.3333 18.4543H4.16667C3.72464 18.4543 3.30072 18.2788 2.98816 17.9662C2.67559 17.6536 2.5 17.2297 2.5 16.7877V7.62101C2.5 7.17898 2.67559 6.75506 2.98816 6.4425C3.30072 6.12994 3.72464 5.95435 4.16667 5.95435H9.16667M12.5 3.45435H17.5M17.5 3.45435V8.45435M17.5 3.45435L8.33333 12.621" stroke="#6CA1F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>

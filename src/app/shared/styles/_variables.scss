@@ -1,10 +1,13 @@
 :root {
-    --color-light: #F1F1F1;
+    --color-main: #F1F1F1;    
+    --color-accent: #D9E1EA;
     --color-dark: #1a1a1a;
     --color-gray: #b7b7b7;
     --color-red: #f4123c;
     --color-violet: #923dff;
 
     --gradient: linear-gradient(to top right, #f4123c, #923dff);
-    --shadow: 0 0 0.5rem 0.25rem var(--color-gray);
+    --shadow: 0 0.125rem 0.5rem 0.125rem var(--color-gray);
+
+    --transition-duration: 0.3s;
 }

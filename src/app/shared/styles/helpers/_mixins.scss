@@ -76,3 +76,10 @@
     background-color: var(--color-dark-15);
   }
 }
+
+@mixin gradient-border($borderWidth, $bgColor) {
+  background: 
+    linear-gradient($bgColor, $bgColor) padding-box,
+    var(--gradient) border-box;
+  border: #{$borderWidth} solid transparent;
+}

@@ -1,9 +1,20 @@
+@use 'helpers' as *;
+
 body {
     background-color: var(--color-main);
     color: var(--color-dark);
     font-family: system-ui, sans-serif;
 }
 
-a {
+a[class] {
     text-decoration: none;
+}
+
+a:not([class]) {
+    color: var(--color-violet);
+    transition-duration: var(--transition-duration);
+
+    @include hover {
+        filter: brightness(1.4);
+    }
 }

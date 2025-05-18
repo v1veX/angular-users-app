@@ -1,21 +1,22 @@
 <section class="section container">
     <h1 class="visually-hidden">Users</h1>
     <header class="section__header">
-        <a [routerLink]="['/create-user']" class="section__link button button--accent">
-            <div class="button__icon">
+        <a [routerLink]="['/create-user']" class="section__link button button--gradient-border">
+            <span class="button__icon">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M24 10V38M10 24H38" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-            </div>
+            </span>
             <span>Add user</span>
         </a>
     </header>
     <div class="section__body">
         <ul class="users-list">
             <li class="users-list__item">
+                <!-- Route to 'user/:id' -->
                 <a href="/" class="user-card tile">
                     <img
-                        src=""
+                        src="images/profile.png"
                         alt=""
                         class="user-card__image"
                         width="40"

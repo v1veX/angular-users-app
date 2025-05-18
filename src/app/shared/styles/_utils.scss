@@ -26,37 +26,20 @@
 }
 
 .tile {
-    background-color: var(--color-accent);
+    @include gradient-border(rem(2), var(--color-main));
+    
     border-radius: rem(10);
 }
 
-.button {
+.button,
+.button-skeleton {
     @include flex-center;
 
     column-gap: rem(5);
     padding: rem(5) rem(15);
-    background-color: var(--color-main);
-    border-radius: rem(5);
-    color: var(--color-dark);
+    border: none;
     font-weight: 600;
     transition-duration: var(--transition-duration);
-
-    @include hover {
-        filter: brightness(0.95);
-    }
-
-    &--accent {
-        background-color: var(--color-accent);
-    }
-
-    &--gradient {
-        background-image: var(--gradient);
-        color: var(--color-light);
-
-        @include hover {
-            filter: brightness(1.2);
-        }
-    }
 
     &__icon {
         --size: #{rem(20)};
@@ -67,5 +50,38 @@
             width: 100%;
             height: 100%;
         }
+    }
+}
+
+.button {
+    background-color: var(--color-gray-light);
+    border-radius: rem(5);
+    color: var(--color-dark);
+
+    @include hover {
+        filter: brightness(0.95);
+    }
+
+    &--gradient-border {
+        @include gradient-border(rem(2), var(--color-main));
+    }
+
+    &--gradient-bg {
+        background-image: var(--gradient);
+        color: var(--color-main);
+
+        @include hover {
+            filter: brightness(1.2);
+        }
+    }
+}
+
+.button-skeleton {
+    padding-inline: 0;
+    color: var(--color-gray-alt);
+
+    @include hover {
+        filter: brightness(1.2);
+        column-gap: rem(10);
     }
 }

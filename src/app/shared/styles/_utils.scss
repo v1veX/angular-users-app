@@ -85,3 +85,37 @@
         column-gap: rem(10);
     }
 }
+
+@keyframes rotation-animation {
+    to {
+        rotate: 360deg;
+    }
+}
+
+.component-preloader {
+    --circleSize: #{rem(40)};
+
+    @include flex-center;
+
+    grid-row: -1 / 1;
+    grid-column: -1 / 1;
+    flex-grow: 1;
+
+    &--small {
+        --circleSize: #{rem(20)};
+    }
+
+    &--big {
+        --circleSize: #{rem(60)};
+    }
+
+    &::before {
+        content: '';
+        height: var(--circleSize);
+        aspect-ratio: 1;
+        border: rem(3) solid var(--color-gray-alt);
+        border-right-color: transparent;
+        border-radius: 50%;
+        animation: rotation-animation 1.5s linear infinite;
+    }
+}

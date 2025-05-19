@@ -1,0 +1,22 @@
+@use '../shared/styles/helpers' as *;
+
+.alert {
+    @include flex-center;
+
+    position: fixed;
+    inset: 0;
+    padding: rem(20);
+    background-color: var(--color-dark-transparent);
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: rem(15);
+        width: 100%;
+        max-width: rem(500);
+        padding: rem(20);
+        background-color: var(--color-main);
+        border-radius: rem(15);
+    }
+}

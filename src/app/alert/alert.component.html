@@ -1,0 +1,22 @@
+@if (isShown) {
+    <div class="alert" role="alertdialog" (click)="onOuterClick($event)">
+        <div class="alert__inner">
+            <h2 class="alert__title">{{title}}</h2>
+            <p class="alert__message">{{message}}</p>
+            @if (isContainsLink) {
+                <a
+                    [routerLink]="[link]"
+                    class="alert__link button button--gradient-bg"
+                    (click)="onButtonClick()"
+                >{{buttonText}}</a>
+            }
+            @else {
+                <button
+                    type="button"
+                    class="alert__button button button--gradient-bg"
+                    (click)="onButtonClick()"
+                >{{buttonText}}</button>
+            }
+        </div>
+    </div>
+}

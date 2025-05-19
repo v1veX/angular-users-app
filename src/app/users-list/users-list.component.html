@@ -11,10 +11,13 @@
         </a>
     </header>
     <div class="section__body">
+    @if (users) {
         <ul class="users-list">
-            <li class="users-list__item">
-                <!-- Route to 'user/:id' -->
-                <a href="/" class="user-card tile">
+        @for (user of users; track user.id) {
+            <li 
+                class="users-list__item"
+            >
+                <a [routerLink]="['/user', user.id]" class="user-card tile">
                     <img
                         src="images/profile.png"
                         alt=""
@@ -23,8 +26,8 @@
                         height="40"
                     />
                     <div class="user-card__body">
-                        <h2 class="user-card__name">Vladimir Sakmarkin</h2>
-                        <p class="user-card__username">&#64;v1veX</p>
+                        <h2 class="user-card__name">{{user.name}}</h2>
+                        <p class="user-card__username">&#64;{{user.username}}</p>
                     </div>
                     <div class="user-card__view-icon">
                         <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,6 +36,14 @@
                     </div>
                 </a>
             </li>
+        }
+        @empty {
+            <p>No users found</p>
+        }
         </ul>
+    }
+    @else {
+        <div class="component-preloader component-preloader--big"></div>
+    }
     </div>
 </section>

@@ -1,14 +1,20 @@
 @use '../shared/styles/helpers' as *;
 
 .user-details {
-    --gap: #{rem(20)};
-
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-areas: 
         'image info'
         'actions info';
-    gap: var(--gap);
+    gap: rem(20);
+
+    @include mobile {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            'image'
+            'info'
+            'actions';
+    }
 
     &__image-wrapper {
         @include flex-center;
@@ -17,17 +23,31 @@
     }
 
     &__image {
-        --size: #{rem(250)};
-
         display: block;
-        width: var(--size);
+        width: rem(250);
+
+        @include tablet {
+            width: rem(150);
+        }
+
+        @include mobile {
+            width: rem(300);
+        }
+
+        @include mobile-s {
+            width: rem(200);
+        }
     }
 
     &__actions {
         grid-area: actions;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        column-gap: rem(10);
+        gap: rem(10);
+
+        @include tablet {
+            grid-template-columns: 1fr;
+        }
     }
 
     &__delete-button {

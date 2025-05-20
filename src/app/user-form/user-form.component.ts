@@ -36,7 +36,24 @@ export class UserFormComponent implements OnChanges {
     if (this.user) {
       this.submitState.action = 'update';
       this.submitState.buttonText = 'Apply changes';
+      this.insertUserData();
     }
+  }
+
+  insertUserData() {
+    if (!this.user) {
+      return;
+    }
+    this.nameField.setValue(this.user.name);
+    this.usernameField.setValue(this.user.username);
+    this.emailField.setValue(this.user.email);
+    this.cityField.setValue(this.user.address.city);
+    this.streetField.setValue(this.user.address.street);
+    this.suiteField.setValue(this.user.address.suite);
+    this.zipcodeField.setValue(this.user.address.zipcode);
+    this.phoneField.setValue(this.user.phone);
+    this.companyField.setValue(this.user.company.name);
+    this.websiteField.setValue(this.user.website);
   }
 
   onCreate() {

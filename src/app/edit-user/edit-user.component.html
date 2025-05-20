@@ -1,1 +1,26 @@
-<p>edit-user works!</p>
+<section class="section container">
+    <h1 class="visually-hidden">Users</h1>
+    <header class="section__header">
+        <a [routerLink]="['/user', user?.id]" class="section__link button-skeleton">
+        @if (user) {
+            <span class="button-skeleton__icon">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M38 24H10M10 24L24 38M10 24L24 10" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            <span>Back to user details</span>
+        }
+        @else {
+            <div class="component-preloader component-preloader--small"></div>
+        }
+        </a>
+    </header>
+    <div class="section__body">
+        @if (user) {
+            <app-user-form [user]="user"></app-user-form>
+        }
+        @else {
+            <div class="component-preloader component-preloader--big"></div>
+        }
+    </div>
+</section>

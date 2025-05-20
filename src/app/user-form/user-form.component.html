@@ -1,1 +1,215 @@
-<p>user-form works!</p>
+<form class="user-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="user-form__grid">
+        <div class="user-form__field form-field">
+            <label for="name" class="form-field__label">Name<span class="form-field__required-star" aria-hidden="true">*</span></label>
+            <div class="form-field__control-wrapper">
+                <input
+                    class="form-field__control"
+                    [class.invalid]="nameField.invalid && nameField.touched"
+                    id="name"
+                    name="name"
+                    type="text"
+                    formControlName="name"
+                    placeholder="Alex Creek"
+                    required
+                />
+            </div>
+            <div class="form-field__errors">
+                @if (nameField.invalid && nameField.touched) {
+                    <p>Fill in this field</p>
+                }
+            </div>
+        </div>
+        <div class="user-form__field form-field">
+            <label for="username" class="form-field__label">Username<span class="form-field__required-star" aria-hidden="true">*</span></label>
+            <div class="form-field__control-wrapper">
+                <input
+                    class="form-field__control"
+                    [class.invalid]="usernameField.invalid && usernameField.touched"
+                    id="username"
+                    name="username"
+                    type="text"
+                    formControlName="username"
+                    placeholder="alex_crk_96"
+                    required
+                />
+            </div>
+            <div class="form-field__errors">
+                @if (usernameField.invalid && usernameField.touched) {
+                    <p>Fill in this field</p>
+                }
+            </div>
+        </div>
+        <div class="user-form__field form-field">
+            <label for="city" class="form-field__label">City<span class="form-field__required-star" aria-hidden="true">*</span></label>
+            <div class="form-field__control-wrapper">
+                <input
+                    class="form-field__control"
+                    [class.invalid]="cityField.invalid && cityField.touched"
+                    id="city"
+                    name="city"
+                    type="text"
+                    formControlName="city"
+                    placeholder="New York"
+                    required
+                />
+            </div>
+            <div class="form-field__errors">
+                @if (cityField.invalid && cityField.touched) {
+                    <p>Fill in this field</p>
+                }
+            </div>
+        </div>
+        <div class="user-form__field form-field">
+            <label for="street" class="form-field__label">Street<span class="form-field__required-star" aria-hidden="true">*</span></label>
+            <div class="form-field__control-wrapper">
+                <input
+                    class="form-field__control"
+                    [class.invalid]="streetField.invalid && streetField.touched"
+                    id="street"
+                    name="street"
+                    type="text"
+                    formControlName="street"
+                    placeholder="5th ave."
+                    required
+                />
+            </div>
+            <div class="form-field__errors">
+                @if (streetField.invalid && streetField.touched) {
+                    <p>Fill in this field</p>
+                }
+            </div>
+        </div>
+        <div class="user-form__field form-field">
+            <label for="suite" class="form-field__label">Suite<span class="form-field__required-star" aria-hidden="true">*</span></label>
+            <div class="form-field__control-wrapper">
+                <input
+                    class="form-field__control"
+                    [class.invalid]="suiteField.invalid && suiteField.touched"
+                    id="suite"
+                    name="suite"
+                    type="text"
+                    formControlName="suite"
+                    placeholder="34"
+                    required
+                />
+            </div>
+            <div class="form-field__errors">
+                @if (suiteField.invalid && suiteField.touched) {
+                    <p>Fill in this field</p>
+                }
+            </div>
+        </div>
+        <div class="user-form__field form-field">
+            <label for="zipcode" class="form-field__label">Zipcode<span class="form-field__required-star" aria-hidden="true">*</span></label>
+            <div class="form-field__control-wrapper">
+                <input
+                    class="form-field__control"
+                    [class.invalid]="zipcodeField.invalid && zipcodeField.touched"
+                    id="zipcode"
+                    name="zipcode"
+                    type="text"
+                    formControlName="zipcode"
+                    placeholder="1234-5678"
+                    required
+                />
+            </div>
+            <div class="form-field__errors">
+                @if (zipcodeField.invalid && zipcodeField.touched) {
+                    <p>Fill in this field</p>
+                }
+            </div>
+        </div>
+        <div class="user-form__field form-field">
+            <label for="email" class="form-field__label">Email<span class="form-field__required-star" aria-hidden="true">*</span></label>
+            <div class="form-field__control-wrapper">
+                <input
+                    class="form-field__control"
+                    [class.invalid]="emailField.invalid && emailField.touched"
+                    id="email"
+                    name="email"
+                    type="email"
+                    formControlName="email"
+                    placeholder="alex.creek@mail.com"
+                    required
+                />
+            </div>
+            <div class="form-field__errors">
+                @if (emailField.invalid && emailField.touched) {
+                    @if (emailField.hasError('email')) {
+                        <p>Fill the correct email</p>
+                    }
+                    @else {
+                        <p>Fill in this field</p>
+                    }
+                }
+            </div>
+        </div>
+        <div class="user-form__field form-field">
+            <label for="company" class="form-field__label">Company<span class="form-field__required-star" aria-hidden="true">*</span></label>
+            <div class="form-field__control-wrapper">
+                <input
+                    class="form-field__control"
+                    [class.invalid]="companyField.invalid && companyField.touched"
+                    id="company"
+                    name="company"
+                    type="text"
+                    formControlName="company"
+                    placeholder="BreandonSwitch LLC"
+                    required
+                />
+            </div>
+            <div class="form-field__errors">
+                @if (companyField.invalid && companyField.touched) {
+                    <p>Fill in this field</p>
+                }
+            </div>
+        </div>
+        <div class="user-form__field form-field">
+            <label for="phone" class="form-field__label">Phone<span class="form-field__required-star" aria-hidden="true">*</span></label>
+            <div class="form-field__control-wrapper">
+                <input
+                    class="form-field__control"
+                    [class.invalid]="phoneField.invalid && phoneField.touched"
+                    id="phone"
+                    name="phone"
+                    type="text"
+                    formControlName="phone"
+                    placeholder="1-234-567-78"
+                    required
+                />
+            </div>
+            <div class="form-field__errors">
+                @if (phoneField.invalid && phoneField.touched) {
+                    <p>Fill in this field</p>
+                }
+            </div>
+        </div>
+        <div class="user-form__field form-field">
+            <label for="website" class="form-field__label">Website<span class="form-field__required-star" aria-hidden="true">*</span></label>
+            <div class="form-field__control-wrapper">
+                <input
+                    class="form-field__control"
+                    [class.invalid]="websiteField.invalid && websiteField.touched"
+                    id="website"
+                    name="website"
+                    type="text"
+                    formControlName="website"
+                    placeholder="https://cool-alex-website.com"
+                    required
+                />
+            </div>
+            <div class="form-field__errors">
+                @if (websiteField.invalid && websiteField.touched) {
+                    <p>Fill in this field</p>
+                }
+            </div>
+        </div>
+    </div>
+    <footer class="user-form__footer">
+        <button
+            class="user-form__submit-button button button--gradient-bg"
+            type="submit"
+        >{{buttonText}}</button>
+    </footer>
+</form>

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AlertData } from '../shared/interfaces/alertData';
 import { AlertService } from '../shared/services/alert.service';
+import { AlertState } from '../shared/interfaces/AlertState';
 
 @Component({
   selector: 'app-alert',
@@ -11,35 +11,20 @@ import { AlertService } from '../shared/services/alert.service';
 })
 export class AlertComponent {
   private alertService = inject(AlertService)
-  private isCloseOnOuterClick = true;
-  isShown = false;
-  isContainsLink = false;
-  title = '';
-  message = '';
-  buttonText = 'Ok';
-  link = '';
+  private state!: AlertState;
 
   constructor() {
-    this.alertService.alertData.subscribe(alertData => this.openAlert(alertData));
-    this.hide();
-  }
-
-  private openAlert(alertData: AlertData) {
-    this.title = alertData.title;
-    this.message = alertData.message ? alertData.message : '';
-    this.buttonText = alertData.buttonText ? alertData.buttonText : '';
-    this.link = alertData.link ? alertData.link : '';
-    this.isContainsLink = alertData.isContainsLink as boolean;
-    this.isCloseOnOuterClick = !alertData.isContainsLink;
-    this.show();
+    this.alertService.alertState.subscribe(alertState => {
+      this.state = alertState;
+    });
   }
 
   private show() {
-    this.isShown = true;
+    this.state.isShown = true;
   }
 
   private hide() {
-    this.isShown = false;
+    this.state.isShown = false;
   }
 
   onButtonClick() {
@@ -47,7 +32,7 @@ export class AlertComponent {
   }
 
   onOuterClick(event: Event) {
-    if (!this.isCloseOnOuterClick) {
+    if (!this.state.isCloseOnOuterClick) {
       return;
     }
 
@@ -59,5 +44,29 @@ export class AlertComponent {
     }
 
     this.hide();
+  }
+
+  get isShown() {
+    return this.state.isShown;
+  }
+
+  get isContainsLink() {
+    return this.state.isContainsLink;
+  }
+
+  get title() {
+    return this.state.title;
+  }
+
+  get message() {
+    return this.state.message;
+  }
+
+  get buttonText() {
+    return this.state.buttonText;
+  }
+
+  get link() {
+    return this.state.link;
   }
 }

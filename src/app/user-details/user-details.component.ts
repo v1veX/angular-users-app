@@ -41,7 +41,6 @@ export class UserDetailsComponent {
           message: 'Because of using jsonplaceholder as data API, POST, PUT and DELETE requests are not mutate server data. If you want to ensure that requests really work, please check devtools console.',
           buttonText: 'Back to users',
           link: '/',
-          isContainsLink: true
         });
       }
     });

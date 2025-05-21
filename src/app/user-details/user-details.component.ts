@@ -36,7 +36,7 @@ export class UserDetailsComponent {
       if (res.ok) {
         console.log(`User with id ${userId} is deleted.\nServer response status: ${res.status}`);
         this.deletionInProgress = false;
-        this.alertService.callAlert({
+        this.alertService.showAlert({
           title: 'User successfully deleted',
           message: 'Because of using jsonplaceholder as data API, POST, PUT and DELETE requests are not mutate server data. If you want to ensure that requests really work, please check devtools console.',
           buttonText: 'Back to users',

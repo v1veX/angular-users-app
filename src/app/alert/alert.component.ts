@@ -15,16 +15,16 @@ export class AlertComponent {
 
   constructor() {
     this.alertService.alertState.subscribe(alertState => {
-      this.state = alertState;
+      this.updateState(alertState);
     });
   }
 
-  private show() {
-    this.state.isShown = true;
+  private updateState(newState: AlertState) {
+    this.state = newState;
   }
 
   private hide() {
-    this.state.isShown = false;
+    this.alertService.hideAlert();
   }
 
   onButtonClick() {

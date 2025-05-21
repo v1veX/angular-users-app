@@ -76,7 +76,7 @@ export class UserFormComponent implements OnChanges {
     
     this.usersServive.createUser(newUser).subscribe(res => {
       if (res.ok) {
-        this.alertServive.callAlert({
+        this.alertServive.showAlert({
           title: 'User successfully created',
           message: 'Because of using jsonplaceholder as data API, POST, PUT and DELETE requests are not mutate server data. If you want to ensure that requests really work, please check devtools console.',
           buttonText: 'Back to users',
@@ -108,7 +108,7 @@ export class UserFormComponent implements OnChanges {
 
     this.usersServive.updateUser(updatedUser.id!, updatedUser).subscribe(res => {
       if (res.ok) {
-        this.alertServive.callAlert({
+        this.alertServive.showAlert({
           title: 'User successfully updated',
           message: 'Because of using jsonplaceholder as data API, POST, PUT and DELETE requests are not mutate server data. If you want to ensure that requests really work, please check devtools console.',
           buttonText: 'Back to user details',

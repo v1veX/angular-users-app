@@ -7,7 +7,7 @@ import { AlertOptions } from '../interfaces/AlertOptions';
   providedIn: 'root'
 })
 export class AlertService {
-    private alertStateSubject = new BehaviorSubject<AlertState>({
+    private readonly initialState: AlertState = {
         isShown: false,
         isCloseOnOuterClick: true,
         isContainsLink: false,
@@ -15,10 +15,11 @@ export class AlertService {
         message: '',
         buttonText: 'Ok',
         link: ''
-    });
+    };
+    private alertStateSubject = new BehaviorSubject<AlertState>(this.initialState);
     alertState = this.alertStateSubject.asObservable();
 
-    callAlert(options: AlertOptions) {
+    showAlert(options: AlertOptions) {
         const newAlertState: AlertState = {
             isShown: true,
             isCloseOnOuterClick: options?.link ? false : true,
@@ -29,5 +30,11 @@ export class AlertService {
             link: options?.link ? options.link : ''
         }
         this.alertStateSubject.next(newAlertState);
+        document.body.style.overflowY = 'hidden';
+    }
+
+    hideAlert() {
+        this.alertStateSubject.next(this.initialState);
+        document.body.style.overflowY = 'auto';
     }
 }

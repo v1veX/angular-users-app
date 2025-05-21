@@ -3,10 +3,11 @@ import { RouterLink, ActivatedRoute } from '@angular/router';
 import { UsersService } from '../shared/services/users.service';
 import { User } from '../shared/interfaces/user';
 import { AlertService } from '../shared/services/alert.service';
+import { PhoneLinkPipe } from '../shared/pipes/PhoneLinkPipe';
 
 @Component({
   selector: 'app-user-details',
-  imports: [RouterLink],
+  imports: [RouterLink, PhoneLinkPipe],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.scss'
 })

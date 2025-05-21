@@ -31,6 +31,7 @@ export class UserFormComponent implements OnChanges {
     action: 'create',
     buttonText: 'Create'
   }
+  isSubmissionInProgress = false;
 
   ngOnChanges() {
     if (this.user) {
@@ -74,8 +75,10 @@ export class UserFormComponent implements OnChanges {
       website: this.websiteField.value!
     }
     
+    this.isSubmissionInProgress = true;
     this.usersServive.createUser(newUser).subscribe(res => {
       if (res.ok) {
+        this.isSubmissionInProgress = false;
         this.alertServive.showAlert({
           title: 'User successfully created',
           message: 'Because of using jsonplaceholder as data API, POST, PUT and DELETE requests are not mutate server data. If you want to ensure that requests really work, please check devtools console.',
@@ -106,8 +109,10 @@ export class UserFormComponent implements OnChanges {
       website: this.websiteField.value!
     }
 
+    this.isSubmissionInProgress = true;
     this.usersServive.updateUser(updatedUser.id!, updatedUser).subscribe(res => {
       if (res.ok) {
+        this.isSubmissionInProgress = false;
         this.alertServive.showAlert({
           title: 'User successfully updated',
           message: 'Because of using jsonplaceholder as data API, POST, PUT and DELETE requests are not mutate server data. If you want to ensure that requests really work, please check devtools console.',

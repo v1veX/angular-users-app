@@ -119,3 +119,7 @@
         animation: rotation-animation 1.5s linear infinite;
     }
 }
+
+.disabled {
+    pointer-events: none;
+}

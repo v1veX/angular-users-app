@@ -35,6 +35,7 @@
                 </a>
                 <button
                     class="user-details__delete-button button"
+                    [class.disabled]="deletionInProgress"
                     type="button"
                     (click)="onDeleteClick()"
                 >

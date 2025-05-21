@@ -209,7 +209,15 @@
     <footer class="user-form__footer">
         <button
             class="user-form__submit-button button button--gradient-bg"
+            [class.disabled]="isSubmissionInProgress"
             type="submit"
-        >{{buttonText}}</button>
+        >
+        @if (isSubmissionInProgress) {
+            <div class="component-preloader component-preloader--small"></div>
+        }
+        @else {
+            {{buttonText}}
+        }
+        </button>
     </footer>
 </form>

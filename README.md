@@ -11,6 +11,7 @@
     npm i
     ```
     to install necessary dependencies.
+    
     4. Then in terminal run 
     ```bash
     ng serve

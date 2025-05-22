@@ -20,8 +20,16 @@ export class UserDetailsComponent {
 
   constructor() {
     const userId = Number(this.route.snapshot.params['id']);
-    this.usersService.getUser(userId).subscribe(user => {
-      this.user = user;
+    this.usersService.getUser(userId).subscribe({
+      next: user => {
+        this.user = user;
+      },
+      error: () => {
+        this.alertService.showAlert({
+          title: 'Something went wrong',
+          message: 'An error has occurred on the server and app can`t load user details. Please try reload the page.'
+        })
+      }
     });
   }
 
@@ -33,16 +41,24 @@ export class UserDetailsComponent {
     }
 
     this.deletionInProgress = true;
-    this.usersService.deleteUser(userId).subscribe(res => {
-      if (res.ok) {
-        console.log(`User with id ${userId} is deleted.\nServer response status: ${res.status}`);
-        this.deletionInProgress = false;
+    this.usersService.deleteUser(userId).subscribe({
+      next: res => {
+        if (res.ok) {
+          console.log(`User with id ${userId} is deleted.\nServer response status: ${res.status}`);
+          this.deletionInProgress = false;
+          this.alertService.showAlert({
+            title: 'User successfully deleted',
+            message: 'Because of using jsonplaceholder as data API, POST, PUT and DELETE requests are not mutate server data. If you want to ensure that requests really work, please check devtools console.',
+            buttonText: 'Back to users',
+            link: '/',
+          });
+        }
+      },
+      error: () => {
         this.alertService.showAlert({
-          title: 'User successfully deleted',
-          message: 'Because of using jsonplaceholder as data API, POST, PUT and DELETE requests are not mutate server data. If you want to ensure that requests really work, please check devtools console.',
-          buttonText: 'Back to users',
-          link: '/',
-        });
+          title: 'Something went wrong',
+          message: 'An error has occurred on the server and app can`t delete user. Please try again later.'
+        })
       }
     });
   }

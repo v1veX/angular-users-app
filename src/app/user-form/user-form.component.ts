@@ -25,8 +25,8 @@ export class UserFormComponent implements OnChanges {
     phone: new FormControl('', [Validators.required]),
     website: new FormControl('', [Validators.required]),
   })
-  private usersServive = inject(UsersService);
-  private alertServive = inject(AlertService);
+  private usersService = inject(UsersService);
+  private alertService = inject(AlertService);
   private submitState = {
     action: 'create',
     buttonText: 'Create'
@@ -57,6 +57,13 @@ export class UserFormComponent implements OnChanges {
     this.websiteField.setValue(this.user.website);
   }
 
+  handleRequestError() {
+    this.alertService.showAlert({
+      title: 'Something went wrong',
+      message: 'An error has occurred on the server and app can`t send user data. Please try again later.'
+    });
+  }
+
   onCreate() {
     const newUser: User = {
       name: this.nameField.value!,
@@ -76,17 +83,20 @@ export class UserFormComponent implements OnChanges {
     }
     
     this.isSubmissionInProgress = true;
-    this.usersServive.createUser(newUser).subscribe(res => {
-      if (res.ok) {
-        this.isSubmissionInProgress = false;
-        this.alertServive.showAlert({
-          title: 'User successfully created',
-          message: 'Because of using jsonplaceholder as data API, POST, PUT and DELETE requests are not mutate server data. If you want to ensure that requests really work, please check devtools console.',
-          buttonText: 'Back to users',
-          link: '/',
-        })
-        console.log(`User is created. Server response status: ${res.status}`);
-      }
+    this.usersService.createUser(newUser).subscribe({
+      next: res => {
+        if (res.ok) {
+          this.alertService.showAlert({
+            title: 'User successfully created',
+            message: 'Because of using jsonplaceholder as data API, POST, PUT and DELETE requests are not mutate server data. If you want to ensure that requests really work, please check devtools console.',
+            buttonText: 'Back to users',
+            link: '/',
+          })
+          console.log(`User is created. Server response status: ${res.status}`);
+        }
+      },
+      error:  () => {this.handleRequestError()},
+      complete: () => {this.isSubmissionInProgress = false;}
     });
   }
 
@@ -110,17 +120,20 @@ export class UserFormComponent implements OnChanges {
     }
 
     this.isSubmissionInProgress = true;
-    this.usersServive.updateUser(updatedUser.id!, updatedUser).subscribe(res => {
-      if (res.ok) {
-        this.isSubmissionInProgress = false;
-        this.alertServive.showAlert({
-          title: 'User successfully updated',
-          message: 'Because of using jsonplaceholder as data API, POST, PUT and DELETE requests are not mutate server data. If you want to ensure that requests really work, please check devtools console.',
-          buttonText: 'Back to user details',
-          link: `/user/${updatedUser.id}`,
-        })
-        console.log(`User is updated. User id: ${res.body?.id} Server response status: ${res.status}`);
-      }
+    this.usersService.updateUser(updatedUser.id!, updatedUser).subscribe({
+      next: res => {
+        if (res.ok) {
+          this.alertService.showAlert({
+            title: 'User successfully updated',
+            message: 'Because of using jsonplaceholder as data API, POST, PUT and DELETE requests are not mutate server data. If you want to ensure that requests really work, please check devtools console.',
+            buttonText: 'Back to user details',
+            link: `/user/${updatedUser.id}`,
+          })
+          console.log(`User is updated. User id: ${res.body?.id} Server response status: ${res.status}`);
+        }
+      },
+      error: () => {this.handleRequestError()},
+      complete: () => {this.isSubmissionInProgress = false;}
     });
   }
 
